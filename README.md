@@ -1,2 +1,2 @@
 # insta_tmp_front
-リポジトリ名は仮です
+docker構築

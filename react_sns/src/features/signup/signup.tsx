@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 export const SignUpPage = () => {
@@ -6,9 +6,25 @@ export const SignUpPage = () => {
   const [nickname, setNickname] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [retypePassword, setRetypePassword] = useState('');
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault(); 
+
+    // パスワードと再入力パスワードが一致しているかチェック
+    if (password !== retypePassword) {
+      alert("パスワードが一致しません");
+      return;
+    }
+
+    // 各入力値が空でないかチェック
+    if (nickname === '' || username === '' || password === '') {
+      alert("入力値が空です");
+      return;
+    }
+
+    // ユーザー登録APIを呼び出す
     const response = await fetch('http://localhost:8080/auth/signup', {
       method: 'POST',
       headers: {
@@ -22,7 +38,7 @@ export const SignUpPage = () => {
       // タイムラインページにリダイレクト
       navigate('/');
     } else {
-      alert("アカウント登録に失敗しました")
+      alert("アカウント登録に失敗しました\nhint: すでに登録されているユーザー名かもしれません")
     }
   }
 
@@ -39,6 +55,10 @@ export const SignUpPage = () => {
       <label>
         Password:
         <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
+      </label>
+      <label>
+        【確認】ReType Password:
+        <input type="password" value={retypePassword} onChange={e => setRetypePassword(e.target.value)} />
       </label>
       <input type="submit" value="Submit" />
     </form>

@@ -5,6 +5,7 @@ WORKDIR /usr/src/app
 
 COPY package.json package-lock.json ./
 RUN npm install --verbose
+RUN npm install react-cookie --save
 RUN ls -la node_modules
 COPY . .
 

@@ -10,7 +10,10 @@ const Session_check = () => {
 
    
     if (!sessionCookie) {
-        
+        /* ログインページを表示*/ 
+    }
+    else{
+      /*マイページにリダイレクト*/
     }
   }, [cookies]);
   return (

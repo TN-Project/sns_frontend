@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 export const LoginPage = () => {
+  const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+    e.preventDefault(); 
     const response = await fetch('http://localhost:8080/auth/login', {
       method: 'POST',
       headers: {
@@ -17,6 +19,7 @@ export const LoginPage = () => {
 
     if (response.ok) {
       // タイムラインページにリダイレクト
+      navigate('/');
     } else {
       alert("ログインに失敗しました")
     }

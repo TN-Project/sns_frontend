@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
+import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
+import './signup.css'
 
 export const SignUpPage = () => {
   const navigate = useNavigate();
@@ -8,9 +10,19 @@ export const SignUpPage = () => {
   const [password, setPassword] = useState('');
   const [retypePassword, setRetypePassword] = useState('');
 
+  const [cookies] = useCookies(['login']);
+  useEffect(() => {
+    // クッキーの値を取得する
+    const sessionCookie = cookies.login;
+
+    if (sessionCookie) {
+      // ログインしている場合はタイムラインページにリダイレクト
+      navigate('/');
+    }
+  }, [cookies]);
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault(); 
+    e.preventDefault();
 
     // パスワードと再入力パスワードが一致しているかチェック
     if (password !== retypePassword) {
@@ -31,7 +43,7 @@ export const SignUpPage = () => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ username, password }),
-      credentials: 'include'  
+      credentials: 'include'
     });
 
     if (response.ok) {
@@ -43,24 +55,29 @@ export const SignUpPage = () => {
   }
 
   return (
+    <>
+    <div className='signup-content'>
     <form onSubmit={handleSubmit}>
-      <label>
-        Nickname:
-        <input type="text" value={nickname} onChange={e => setNickname(e.target.value)} />
-      </label>
-      <label>
-        Username:
-        <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
-      </label>
-      <label>
-        Password:
-        <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
-      </label>
-      <label>
-        【確認】ReType Password:
-        <input type="password" value={retypePassword} onChange={e => setRetypePassword(e.target.value)} />
-      </label>
-      <input type="submit" value="Submit" />
-    </form>
+      <h1>ログイン</h1>
+        <label>
+          Nickname:
+          <input type="text" value={nickname} onChange={e => setNickname(e.target.value)} />
+        </label>
+        <label>
+          Username:
+          <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
+        </label>
+        <label>
+          Password:
+          <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
+        </label>
+        <label>
+          【確認】ReType Password:
+          <input type="password" value={retypePassword} onChange={e => setRetypePassword(e.target.value)} />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+    </>
   )
 }

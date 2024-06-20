@@ -1,6 +1,7 @@
 import { useState, useEffect, ChangeEvent } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
+import './new_group.css'
 
 export const AddGroupPage = () => {
     const navigate = useNavigate();
@@ -27,7 +28,7 @@ export const AddGroupPage = () => {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({ groupname, usernames }),
-            credentials: 'include'  
+            credentials: 'include'
         }).then(response => {
             if (response.ok) {
                 navigate('/');
@@ -47,24 +48,35 @@ export const AddGroupPage = () => {
         setUsernames([...usernames, '']);
     };
 
+    const handleRemoveUser = (index: number) => {
+        const newUsernames = [...usernames];
+        newUsernames.splice(index, 1);
+        setUsernames(newUsernames);
+    };
+
     return (
-        <>
-            <h1>グループ新規作成</h1>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    グループ名:
-                    <input type="text" value={groupname} onChange={e => setGroupname(e.target.value)} />
-                </label>
-                {usernames.map((username, index) => (
-                    <label key={index}>
-                        追加するユーザ:
-                        <input type="text" value={username} onChange={e => handleUsernameChange(index, e)} />
-                    </label>
-                ))}
-                <button type="button" onClick={handleAddUser}>ユーザーを追加</button>
-                <br />
-                <input type="submit" value="Submit" />
-            </form>
-        </>
+<>
+  <div className='add-group-content'>
+    <form onSubmit={handleSubmit}>
+      <h1 className='title'>グループ新規作成</h1>
+      <label>
+        グループ名
+        <input type="text" value={groupname} onChange={e => setGroupname(e.target.value)} />
+      </label>
+      {usernames.map((username, index) => (
+        <div key={index} style={{ display: 'flex', alignItems: 'center' }}>
+          <label>
+            追加するユーザ:
+            <input type="text" value={username} onChange={e => handleUsernameChange(index, e)} />
+          </label>
+          <button className='del-btn' type="button" onClick={() => handleRemoveUser(index)} style={{ marginLeft: '10px' }}>削除</button>
+        </div>
+      ))}
+      <button className='add-btn' type="button" onClick={handleAddUser}>ユーザーを追加</button>
+      <br />
+      <input className='submit-btn' type="submit" value="新規作成" />
+    </form>
+  </div>
+</>
     )
 }

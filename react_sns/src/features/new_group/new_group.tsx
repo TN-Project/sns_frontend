@@ -7,7 +7,7 @@ export const AddGroupPage = () => {
     const [groupname, setGroupname] = useState('');
     const [usernames, setUsernames] = useState(['']);
 
-    const [cookies, setCookie, removeCookie] = useCookies(['login']);
+    const [cookies] = useCookies(['login']);
     useEffect(() => {
         // クッキーの値を取得する
         const sessionCookie = cookies.login;

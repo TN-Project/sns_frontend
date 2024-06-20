@@ -58,7 +58,7 @@ export const SignUpPage = () => {
     <>
     <div className='signup-content'>
     <form onSubmit={handleSubmit}>
-      <h1>ログイン</h1>
+      <h1>新規アカウント登録</h1>
         <label>
           Nickname:
           <input type="text" value={nickname} onChange={e => setNickname(e.target.value)} />

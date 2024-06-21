@@ -9,7 +9,7 @@ export const AddGroupPage = () => {
     const [usernames, setUsernames] = useState(['']);
 
     const [cookies] = useCookies(['login']);
-    useEffect(() => {
+    /*useEffect(() => {
         // クッキーの値を取得する
         const sessionCookie = cookies.login;
 
@@ -17,7 +17,7 @@ export const AddGroupPage = () => {
             // ログインしていない場合はログインページにリダイレクト
             navigate('/login');
         }
-    }, [cookies]);
+    }, [cookies]);*/
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -80,3 +80,4 @@ export const AddGroupPage = () => {
 </>
     )
 }
+

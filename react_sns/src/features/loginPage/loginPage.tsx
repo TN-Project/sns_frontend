@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-
+import Session_check from './components/Session_check';
 export const LoginPage = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
@@ -26,6 +26,8 @@ export const LoginPage = () => {
   }
 
   return (
+    <>
+    <Session_check />
     <form onSubmit={handleSubmit}>
       <label>
         Username:
@@ -37,5 +39,6 @@ export const LoginPage = () => {
       </label>
       <input type="submit" value="Submit" />
     </form>
+    </>
   )
 }

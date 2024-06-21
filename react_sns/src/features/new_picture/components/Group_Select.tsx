@@ -36,7 +36,6 @@ const Group_Select= () => {
           const group_data=extractGroupNames(data);
           
           setGroup_list(group_data)
-          setGroup_id(String(group_data[0].Group_id));
           
         } catch (error) {
           console.error('リクエストエラー:', error);
@@ -51,7 +50,6 @@ const Group_Select= () => {
       if (!image){
         setTexterr(true);
       }else{
-      console.log(group_id)
       formData.append('file', image);
       formData.append('group_id', group_id);
       try{
@@ -73,7 +71,9 @@ const Group_Select= () => {
     }
     }
   }
-
+    useEffect(() => {
+      console.log(group_id)
+    },[group_id]);
   return (
     <div>
       {texterr && <p style={{ color: 'red' }}>エラーが発生しました。</p>}

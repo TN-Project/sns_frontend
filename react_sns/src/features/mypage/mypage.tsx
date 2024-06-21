@@ -1,9 +1,12 @@
 import React from 'react'
+import Tab_System from './components/Tab_System';
 
-const mypage = () => {
+const Mypage = () => {
   return (
-    <div>mypage</div>
+  <>
+    <Tab_System/>
+  </>
   )
 }
 
-export default mypage
+export default Mypage

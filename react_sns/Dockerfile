@@ -7,6 +7,7 @@ COPY package.json package-lock.json ./
 RUN npm install --verbose
 RUN npm install react-cookie --save
 RUN npm install react-router-dom --save
+RUN npm install react-tabs --save
 RUN ls -la node_modules
 COPY . .
 

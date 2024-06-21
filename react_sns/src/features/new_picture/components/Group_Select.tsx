@@ -43,6 +43,7 @@ const Group_Select= () => {
           console.error('リクエストエラー:', error);
         }
       }
+      /* */
     useEffect(() => {
         fetchData();
     },[]);

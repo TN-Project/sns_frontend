@@ -2,8 +2,8 @@ import React,{useEffect,useState}from 'react'
 import "./Group_Select.css"
 import { useNavigate } from 'react-router-dom';
 const Group_Select= () => {
-    const [group_list,setGroup_list]=useState<Group[]>([])
-    const [group_id,setGroup_id]=useState("")
+    const [group_list,setGroup_list]=useState<string[]>([])
+    const [group,setGroup]=useState("")
     const [image, setImage] = useState<File>()
     const [texterr,setTexterr]=useState<boolean>(false)
     const navigate = useNavigate();
@@ -23,8 +23,8 @@ const Group_Select= () => {
       groups: Group[];
       message: string;
     }
-    const extractGroupNames = (data: ResponseData): Group[] => {
-     return data.groups;
+    const extractGroupNames = (data: ResponseData): string[] => {
+     return data.groups.map(group => group.Group_name);
     }
     
     async function fetchData() {
@@ -37,7 +37,6 @@ const Group_Select= () => {
           const group_data=extractGroupNames(data);
           
           setGroup_list(group_data)
-          setGroup_id(String(group_data[0].Group_id));
           
         } catch (error) {
           console.error('リクエストエラー:', error);
@@ -53,9 +52,8 @@ const Group_Select= () => {
       if (!image){
         setTexterr(true);
       }else{
-      console.log(group_id)
       formData.append('file', image);
-      formData.append('group_id', group_id);
+      formData.append('group_name', group);
       try{
       const response = await fetch('http://localhost:8080/picture/upload', {
         method: 'POST',
@@ -75,16 +73,18 @@ const Group_Select= () => {
     }
     }
   }
-
+    useEffect(() => {
+      console.log(group)
+    },[group]);
   return (
     <div>
       {texterr && <p style={{ color: 'red' }}>エラーが発生しました。</p>}
       <form>
         
           <p>グループを選択</p>
-          <select value={group_id} onChange={e => setGroup_id(e.target.value)}>
-            {group_list.map((group, index) => (
-            <option key={index} value={group.Group_id}>{group.Group_name}</option>
+          <select value={group} onChange={e => setGroup(e.target.value)}>
+            {group_list.map((group_name, index) => (
+            <option key={index} value={group_name}>{group_name}</option>
           ))}
           </select>
         <input type="file" onChange={fileChange}/>

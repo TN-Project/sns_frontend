@@ -88,7 +88,7 @@ const Group_Select= () => {
           ))}
           </select>
         <input type="file" onChange={fileChange}/>
-        <button type="submit" onClick={handleSubmit}>アップロード</button>
+        <button type="submit" onClick={handleSubmit}>アップロード.</button>
       </form>
     </div>
    

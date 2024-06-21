@@ -77,7 +77,7 @@ useEffect(() => {
         <Tabs>
           <TabList>
           {group_id.map((id, index) => (
-          <Tab key={index} value={id} /*onClick={fetchPicture()}*/>
+          <Tab key={index} value={id} onClick={fetchPicture(id)}>
             {IdToName(id)}
           </Tab>
         ))}

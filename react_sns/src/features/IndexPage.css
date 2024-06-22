@@ -1,0 +1,43 @@
+/* IndexPage.css */
+
+.index-page {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: url('./y.png') no-repeat center center fixed;
+    background-size: cover;
+  }
+  
+  .index-page .signup,
+  .index-page .login {
+    padding: 15px 30px;
+    margin: 10px;
+    width: auto;
+    box-sizing: border-box;
+    background: linear-gradient(45deg, #6a11cb 0%, #2575fc 100%); /* グラデーション背景 */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 25px; /* 丸みを帯びた角 */
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* ボックスシャドウ */
+    transition: all 0.3s ease; /* ホバーアニメーション */
+  }
+  
+  .index-page .signup:hover,
+  .index-page .login:hover {
+    transform: translateY(-2px); /* ホバー時のアニメーション */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* ホバー時のボックスシャドウ */
+  }
+  
+  .index-page .signup:active,
+  .index-page .login:active {
+    transform: translateY(0); /* クリック時のアニメーション */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* クリック時のボックスシャドウ */
+  }
+  

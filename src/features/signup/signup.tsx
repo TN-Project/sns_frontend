@@ -48,7 +48,7 @@ export const SignUpPage = () => {
 
     if (response.ok) {
       // タイムラインページにリダイレクト
-      navigate('/');
+      navigate('/mypage');
     } else {
       alert("アカウント登録に失敗しました\nhint: すでに登録されているユーザー名かもしれません")
     }

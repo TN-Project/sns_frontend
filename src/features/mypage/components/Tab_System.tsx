@@ -35,7 +35,7 @@ const Tab_System = () => {
   
   async function fetchData() {
     try {
-      const response = await fetch('http://localhost:8080/group/acquisition-affiliation-user', {
+      const response = await fetch('https://y.natyosu.com/group/acquisition-affiliation-user', {
         credentials: "include",
       });
       const data: ResponseData = await response.json();
@@ -63,8 +63,8 @@ const Tab_System = () => {
 
   async function fetchPictureID(value: number) {
     try {
-      console.log("http://localhost:8080/group/" + String(value) + "/pictures-list")
-      const response = await fetch("http://localhost:8080/group/" + String(value) + "/pictures-list", {
+      console.log("https://y.natyosu.com/group/" + String(value) + "/pictures-list")
+      const response = await fetch("https://y.natyosu.com/group/" + String(value) + "/pictures-list", {
         credentials: "include",
       });
       /*console.log(response.json());*/
@@ -90,7 +90,7 @@ const Tab_System = () => {
         console.log("picture_id:"+picture_id)
         newPictureNumbers.push(pictures.indexOf(picture_id));
         
-          const response = await fetch("http://localhost:8080/picture/get/" + value + "/" + picture_id, {
+          const response = await fetch("https://y.natyosu.com/picture/get/" + value + "/" + picture_id, {
             credentials: "include",
           });
 

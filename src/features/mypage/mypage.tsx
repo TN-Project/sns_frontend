@@ -14,7 +14,7 @@ const Mypage = () => {
   };
   async function Logout() {
     try {
-      await fetch('http://localhost:8080/auth/logout', {
+      await fetch('https://y.natyosu.com/auth/logout', {
         credentials: "include",
       });
       navigate('/')

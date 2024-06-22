@@ -32,7 +32,7 @@ const Group_Select = () => {
 
   async function fetchData() {
     try {
-      const response = await fetch('http://localhost:8080/group/acquisition-affiliation-user', {
+      const response = await fetch('https://y.natyosu.com/group/acquisition-affiliation-user', {
         credentials: "include",
       });
       const data: ResponseData = await response.json();
@@ -57,7 +57,7 @@ const Group_Select = () => {
       formData.append('file', image);
       formData.append('group_id', group_id);
       try {
-        const response = await fetch('http://localhost:8080/picture/upload', {
+        const response = await fetch('https://y.natyosu.com/picture/upload', {
           method: 'POST',
           body: formData,
           credentials: 'include'

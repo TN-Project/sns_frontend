@@ -10,7 +10,7 @@ export const AddGroupPage = () => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
-        fetch('http://localhost:8080/group/add', {
+        fetch('https://y.natyosu.com/group/add', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

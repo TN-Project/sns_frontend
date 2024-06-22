@@ -37,7 +37,7 @@ export const SignUpPage = () => {
     }
 
     // ユーザー登録APIを呼び出す
-    const response = await fetch('http://localhost:8080/auth/signup', {
+    const response = await fetch('https://y.natyosu.com/auth/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

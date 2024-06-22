@@ -19,7 +19,7 @@ export const LoginPage = () => {
 
     if (response.ok) {
       // タイムラインページにリダイレクト
-      navigate('/');
+      navigate('/mypage');
     } else {
       alert("ログインに失敗しました")
     }

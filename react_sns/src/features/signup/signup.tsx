@@ -16,7 +16,7 @@ export const SignUpPage = () => {
     const sessionCookie = cookies.login;
 
     if (sessionCookie) {
-      // ログインしている場合はタイムラインページにリダイレクト
+      // ログインしている場合は初期ページにリダイレクト
       navigate('/');
     }
   }, [cookies]);

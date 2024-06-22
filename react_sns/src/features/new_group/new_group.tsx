@@ -31,7 +31,7 @@ export const AddGroupPage = () => {
             credentials: 'include'
         }).then(response => {
             if (response.ok) {
-                navigate('/');
+                navigate('/mypage');
             } else {
                 alert("グループ作成に失敗しました");
             }
@@ -53,6 +53,10 @@ export const AddGroupPage = () => {
         newUsernames.splice(index, 1);
         setUsernames(newUsernames);
     };
+    const BackToMypage=()=>{
+      navigate("/mypage")
+    }
+
 
     return (
 <>
@@ -75,6 +79,7 @@ export const AddGroupPage = () => {
       <button className='add-btn' type="button" onClick={handleAddUser}>ユーザーを追加</button>
       <br />
       <input className='submit-btn' type="submit" value="新規作成" />
+      <button className='tomypage' type="button" onClick={BackToMypage}>マイページに戻る</button>
     </form>
   </div>
 </>

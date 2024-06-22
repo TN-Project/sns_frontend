@@ -62,7 +62,7 @@ const Group_Select= () => {
       });
       if (response.ok) {
         console.log('Upload successful');
-        navigate('/');
+        navigate('/mypage');
       } else {
         console.error('Upload failed');
         

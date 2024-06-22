@@ -1,0 +1,16 @@
+/* styles.css */
+img {
+  width: 100%;
+  height: auto; /* 自動的にアスペクト比を維持 */
+  max-width: 200px; /* 最大幅を200pxに設定 */
+  display: block;
+  margin: 10%; 
+  
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 600px) {
+  img {
+    max-width: 150px; /* スマホサイズに合わせて最大幅を調整 */
+  }
+}

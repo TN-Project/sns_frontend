@@ -1,0 +1,15 @@
+button {
+    background-color: #2bac1d;
+    color: white;
+    padding: 10px 15px;
+    margin: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* ボタンホバー時のスタイリング */
+button.hover {
+    background-color: #5dff18;
+}

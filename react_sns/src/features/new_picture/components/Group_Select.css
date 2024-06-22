@@ -1,3 +1,5 @@
+/* Group_Select.css */
+
 /* 全体のスタイリング */
 .group-select-content {
     font-family: Arial, sans-serif;
@@ -11,14 +13,14 @@
 }
 
 /* タイトルのスタイリング */
-.title {
+.group-select-content .title {
     color: #333;
     text-align: center;
     margin-bottom: 20px;
 }
 
 /* フォーム全体のスタイリング */
-form {
+.group-select-content form {
     background: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -27,14 +29,14 @@ form {
 }
 
 /* ラベルのスタイリング */
-label {
+.group-select-content label {
     display: block;
     margin-bottom: 10px;
     color: #555;
 }
 
 /* セレクトボックスのスタイリング */
-select {
+.group-select-content select {
     width: 100%;
     padding: 10px;
     margin-top: 5px;
@@ -45,7 +47,7 @@ select {
 }
 
 /* 入力フィールドのスタイリング */
-input[type="file"] {
+.group-select-content input[type="file"] {
     width: calc(100% - 22px);
     padding: 10px;
     margin-top: 5px;
@@ -55,7 +57,8 @@ input[type="file"] {
     box-sizing: border-box;
 }
 
-.submit-btn {
+/* 送信ボタンのスタイリング */
+.group-select-content .submit-btn {
     display: inline-block;
     background-color: #4CAF50;
     color: white;
@@ -68,6 +71,6 @@ input[type="file"] {
 }
 
 /* ボタンホバー時のスタイリング */
-.submit-btn:hover {
+.group-select-content .submit-btn:hover {
     background-color: #45a049;
 }

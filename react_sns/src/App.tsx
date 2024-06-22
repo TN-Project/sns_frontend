@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 
 import './App.css';
-import New_picture  from './features/new_picture/New_picture';
+import New_picture  from './features/new_picture/new_picture';
 import { LoginPage } from './features/loginPage/loginPage';
 import {SignUpPage} from './features/signup/signup';
 import {AddGroupPage} from './features/new_group/new_group';

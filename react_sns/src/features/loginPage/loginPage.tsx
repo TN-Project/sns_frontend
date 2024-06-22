@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Session_check from './components/Session_check';
+import './loginPage.css';
+
 export const LoginPage = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
@@ -26,19 +28,19 @@ export const LoginPage = () => {
   }
 
   return (
-    <>
-    <Session_check />
-    <form onSubmit={handleSubmit}>
-      <label>
-        Username:
-        <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
-      </label>
-      <label>
-        Password:
-        <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
-      </label>
-      <input type="submit" value="Submit" />
-    </form>
-    </>
-  )
+    <div className="login-page">
+      <Session_check />
+      <form className="login-form" onSubmit={handleSubmit}>
+        <label>
+          Username:
+          <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
+        </label>
+        <label>
+          Password:
+          <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+  );
 }

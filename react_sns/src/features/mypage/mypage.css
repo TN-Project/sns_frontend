@@ -1,15 +1,55 @@
-button {
-    background-color: #2bac1d;
-    color: white;
-    padding: 10px 15px;
-    margin: 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-}
+/* mypage.css */
 
-/* ボタンホバー時のスタイリング */
-button.hover {
-    background-color: #5dff18;
-}
+/* ボタンのコンテナスタイル */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* ボタン間のスペース */
+    margin: 20px 0; /* 上下のマージン */
+  }
+  
+  /* ボタンのスタイル */
+  .mypage .makegroup,
+  .mypage .uppicture {
+    padding: 15px 30px; /* ボタンの大きさを調整 */
+    width: auto; /* 自動幅 */
+    box-sizing: border-box;
+    background-color: #007BFF; /* 背景色を青に変更 */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px; /* 角を丸くする */
+  }
+  
+  .mypage .makegroup:hover,
+  .mypage .uppicture:hover {
+    background-color: #0056b3; /* ホバー時の背景色を濃い青に変更 */
+  }
+  
+  /* タブシステムのスタイル（Tab_Systemコンポーネント用） */
+  .mypage .tab-system {
+    width: 100%;
+    max-width: 600px; /* 最大幅を設定 */
+    margin: 20px auto; /* 中央に配置 */
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  /* メディアクエリを使用してスマートフォンサイズに対応 */
+  @media (max-width: 600px) {
+    .mypage .makegroup,
+    .mypage .uppicture {
+      width: 100%; /* スマートフォンサイズではボタンをフル幅に */
+      font-size: 16px;
+    }
+  
+    .mypage .tab-system {
+      width: 100%;
+      padding: 5px;
+    }
+  
+    .button-container {
+      flex-direction: column; /* スマートフォンサイズではボタンを縦に並べる */
+    }
+  }
+  

@@ -2,7 +2,7 @@ import React,{ useEffect } from 'react'
 import { useCookies } from "react-cookie";
 import { useNavigate } from 'react-router-dom';
 const Session_check = () => {
-  const [cookies, setCookie, removeCookie] = useCookies(['login']);
+  const [cookies] = useCookies(['login']);
   const navigate = useNavigate();
   useEffect(() => {
     // クッキーの値を取得する

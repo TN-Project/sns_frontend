@@ -1,4 +1,4 @@
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import { Tab, Tabs, TabList } from 'react-tabs';
 import React, { useEffect, useState } from 'react'
 
 import 'react-tabs/style/react-tabs.css';
@@ -8,10 +8,7 @@ const Tab_System = () => {
   const [group_id, setGroup_id] = useState<number[]>([])
   const [rpdata, setRpdata] = useState<ResponseData>()
   const [picture_numbers, setPicture_numbers] = useState<number[]>([])
-  interface GroupPicture {
-    Group_id: number;
-    Picture_id: string[];
-  }
+
   interface PictureList {
     message: string;
     pictures: string[];
@@ -66,11 +63,7 @@ const Tab_System = () => {
 
   async function fetchPictureID(value: number) {
     try {
-      
-
-      console.log("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz")
       console.log("http://localhost:8080/group/" + String(value) + "/pictures-list")
-      console.log("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz")
       const response = await fetch("http://localhost:8080/group/" + String(value) + "/pictures-list", {
         credentials: "include",
       });

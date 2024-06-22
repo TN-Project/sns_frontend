@@ -1,12 +1,8 @@
-import React from 'react';
 import Tab_System from './components/Tab_System';
 import { useNavigate } from 'react-router-dom';
-import { useCookies } from 'react-cookie';
 import './mypage.css';
 
 const Mypage = () => {
-  const [cookies] = useCookies(['login']);
-  const sessionCookie = cookies.login;
   const navigate = useNavigate();
   
   const MakeGroup = () => {

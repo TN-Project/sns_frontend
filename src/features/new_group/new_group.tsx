@@ -1,23 +1,11 @@
-import { useState, useEffect, ChangeEvent } from 'react'
+import { useState, ChangeEvent } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { useCookies } from 'react-cookie';
 import './new_group.css'
 
 export const AddGroupPage = () => {
     const navigate = useNavigate();
     const [groupname, setGroupname] = useState('');
     const [usernames, setUsernames] = useState(['']);
-
-    const [cookies] = useCookies(['login']);
-    /*useEffect(() => {
-        // クッキーの値を取得する
-        const sessionCookie = cookies.login;
-
-        if (!sessionCookie) {
-            // ログインしていない場合はログインページにリダイレクト
-            navigate('/login');
-        }
-    }, [cookies]);*/
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();

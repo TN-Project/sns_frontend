@@ -1,13 +1,14 @@
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import React, { useEffect, useState } from 'react'
-
+import React, { useEffect, useState } from 'react';
 import 'react-tabs/style/react-tabs.css';
-import "./Tab_System.css"
+import './Tab_System.css';
+
 const Tab_System = () => {
-  const [pictureapi, setPictureapi] = useState<string[]>([])
-  const [group_id, setGroup_id] = useState<number[]>([])
-  const [rpdata, setRpdata] = useState<ResponseData>()
-  const [picture_numbers, setPicture_numbers] = useState<number[]>([])
+  const [pictureapi, setPictureapi] = useState<string[]>([]);
+  const [group_id, setGroup_id] = useState<number[]>([]);
+  const [rpdata, setRpdata] = useState<ResponseData>();
+  const [picture_numbers, setPicture_numbers] = useState<number[]>([]);
+  
   interface GroupPicture {
     Group_id: number;
     Picture_id: string[];
@@ -20,20 +21,18 @@ const Tab_System = () => {
     Group_id: number;
     Group_name: string;
   }
-
   interface ResponseData {
     groups: Group[];
     message: string;
   }
+
   const extractGroupId = (data: ResponseData): number[] => {
     return data.groups.map(group => group.Group_id);
   }
+  
   const onGroupId = async (value: number) => {
-    
-     console.log(value)
-    const pictures = await fetchPictureID(value)
-     getPicture(value, pictures)
-    
+    const pictures = await fetchPictureID(value);
+    getPicture(value, pictures);
   }
   
   async function fetchData() {
@@ -42,22 +41,19 @@ const Tab_System = () => {
         credentials: "include",
       });
       const data: ResponseData = await response.json();
-      console.log(data);
-      setRpdata(data)
-      
-      /*グループidを取得*/
+      setRpdata(data);
+
       const group_id_list = extractGroupId(data);
-      setGroup_id(group_id_list)
+      setGroup_id(group_id_list);
       if (group_id_list.length > 0) {
         onGroupId(group_id_list[0]);
       }
-
-
     } catch (error) {
       console.error('リクエストエラー:', error);
     }
   }
-  const IdToName = (value: Number) => {
+  
+  const IdToName = (value: number) => {
     if (rpdata) {
       const group = rpdata.groups.find(group => group.Group_id === value);
       return group && group.Group_name;
@@ -66,73 +62,53 @@ const Tab_System = () => {
 
   async function fetchPictureID(value: number) {
     try {
-      
-
-      console.log("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz")
-      console.log("http://localhost:8080/group/" + String(value) + "/pictures-list")
-      console.log("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz")
-      const response = await fetch("http://localhost:8080/group/" + String(value) + "/pictures-list", {
+      const response = await fetch(`http://localhost:8080/group/${value}/pictures-list`, {
         credentials: "include",
       });
-      /*console.log(response.json());*/
       const data: PictureList = await response.json();
-
-      return data.pictures
-      
+      return data.pictures;
     } catch (error) {
       console.error('リクエストエラー:', error);
     }
   }
+
   async function getPicture(value: number, pictures: string[] | undefined) {
     try {
-      
+      if (!pictures) return;
 
-      if (!pictures) {
-        return;
-      }
       const newPictureNumbers: number[] = [];
-      console.log("画像の数は"+pictures.length)
-      const img_url_list:string[]=[]
+      const img_url_list: string[] = [];
+      
       for await (const picture_id of pictures) {
-        console.log("picture_id:"+picture_id)
         newPictureNumbers.push(pictures.indexOf(picture_id));
-        
-          const response = await fetch("http://localhost:8080/picture/get/" + value + "/" + picture_id, {
-            credentials: "include",
-          });
 
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-        
+        const response = await fetch(`http://localhost:8080/picture/get/${value}/${picture_id}`, {
+          credentials: "include",
+        });
+
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+
         const blob = await response.blob();
         const imgUrl = URL.createObjectURL(blob);
-        
-        // 画像URLを保存しておく
-        img_url_list[pictures.indexOf(picture_id)] = imgUrl;
-        // 画像URLを更新
-        setPictureapi([...img_url_list]); 
-        
 
-       
+        img_url_list[pictures.indexOf(picture_id)] = imgUrl;
+
+        setPictureapi([...img_url_list]);
       }
+
       setPicture_numbers(newPictureNumbers);
-      console.log("pictureのindexリスト"+picture_numbers)
-      
     } catch (error) {
       console.error('リクエストエラー:', error);
     }
   }
-
 
   useEffect(() => {
     fetchData();
-    
-    
-    
   }, []);
+
   useEffect(() => {
-    // picture_numbersが更新された後に画像を設定する
     picture_numbers.forEach(id => {
       const imgElement = document.getElementById(String(id));
       if (imgElement) {
@@ -140,8 +116,8 @@ const Tab_System = () => {
       }
     });
   }, [picture_numbers]);
-  return (
 
+  return (
     <Tabs>
       <TabList>
         {group_id.map((id, index) => (
@@ -149,21 +125,14 @@ const Tab_System = () => {
             {IdToName(id)}
           </Tab>
         ))}
-
-
-
       </TabList>
-
-      
-      {picture_numbers.map((id, index) => (
-        <img key={index} id={String(id)} alt="画像"></img>
-      ))}
-        
-      
+      <div className="image-grid">
+        {picture_numbers.map((id, index) => (
+          <img key={index} id={String(id)} alt="画像" />
+        ))}
+      </div>
     </Tabs>
+  );
+};
 
-
-  )
-}
-
-export default Tab_System
+export default Tab_System;

@@ -39,7 +39,7 @@ export const LoginPage = () => {
           Password:
           <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
         </label>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="ログイン" />
       </form>
     </div>
   );

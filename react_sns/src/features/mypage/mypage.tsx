@@ -18,7 +18,7 @@ const Mypage = () => {
   };
   async function Logout() {
     try {
-      await fetch('http://localhost:8080/auth/logout', {
+      await fetch('https://server01.neon-hen.ts.net/auth/logout', {
         credentials: "include",
       });
       navigate('/')

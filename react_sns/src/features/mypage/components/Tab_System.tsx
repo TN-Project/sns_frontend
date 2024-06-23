@@ -37,7 +37,7 @@ const Tab_System = () => {
   
   async function fetchData() {
     try {
-      const response = await fetch('http://localhost:8080/group/acquisition-affiliation-user', {
+      const response = await fetch('https://server01.neon-hen.ts.net/group/acquisition-affiliation-user', {
         credentials: "include",
       });
       const data: ResponseData = await response.json();
@@ -62,7 +62,7 @@ const Tab_System = () => {
 
   async function fetchPictureID(value: number) {
     try {
-      const response = await fetch(`http://localhost:8080/group/${value}/pictures-list`, {
+      const response = await fetch(`https://server01.neon-hen.ts.net/group/${value}/pictures-list`, {
         credentials: "include",
       });
       const data: PictureList = await response.json();
@@ -82,7 +82,7 @@ const Tab_System = () => {
       for await (const picture_id of pictures) {
         newPictureNumbers.push(pictures.indexOf(picture_id));
 
-        const response = await fetch(`http://localhost:8080/picture/get/${value}/${picture_id}`, {
+        const response = await fetch(`https://server01.neon-hen.ts.net/picture/get/${value}/${picture_id}`, {
           credentials: "include",
         });
 

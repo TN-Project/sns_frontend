@@ -22,7 +22,7 @@ export const AddGroupPage = () => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
-        fetch('http://localhost:8080/group/add', {
+        fetch('https://server01.neon-hen.ts.net/group/add', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

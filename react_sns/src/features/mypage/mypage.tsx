@@ -32,7 +32,7 @@ const Mypage = () => {
     <div className="mypage">
       <div className="button-container">
         <button className='makegroup' type="button" onClick={MakeGroup}>グループ<br></br>新規作成</button>
-        <button className='uppicture' type="button" onClick={UpPicture}>写真を投稿する</button>
+        <button className='uppicture' type="button" onClick={UpPicture}>写真投稿</button>
         <button className='logout' type="button" onClick={Logout}>ログアウト</button>
       </div>
       <Tab_System />

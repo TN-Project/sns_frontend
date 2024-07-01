@@ -37,7 +37,7 @@ export const SignUpPage = () => {
     }
 
     // ユーザー登録APIを呼び出す
-    const response = await fetch('https://server01.neon-hen.ts.net/auth/signup', {
+    const response = await fetch('https://y-b.natyosu.com/auth/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

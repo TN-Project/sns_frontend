@@ -18,7 +18,7 @@ const Mypage = () => {
   };
   async function Logout() {
     try {
-      await fetch('https://server01.neon-hen.ts.net/auth/logout', {
+      await fetch('https://y-b.natyosu.com/auth/logout', {
         credentials: "include",
       });
       navigate('/')

@@ -32,7 +32,7 @@ const Group_Select = () => {
 
   async function fetchData() {
     try {
-      const response = await fetch('https://server01.neon-hen.ts.net/group/acquisition-affiliation-user', {
+      const response = await fetch('https://y-b.natyosu.com/group/acquisition-affiliation-user', {
         credentials: "include",
       });
       const data: ResponseData = await response.json();
@@ -57,7 +57,7 @@ const Group_Select = () => {
       formData.append('file', image);
       formData.append('group_id', group_id);
       try {
-        const response = await fetch('https://server01.neon-hen.ts.net/picture/upload', {
+        const response = await fetch('https://y-b.natyosu.com/picture/upload', {
           method: 'POST',
           body: formData,
           credentials: 'include'

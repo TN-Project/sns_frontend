@@ -10,7 +10,7 @@ export const LoginPage = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault(); 
-    const response = await fetch('https://server01.neon-hen.ts.net/auth/login', {
+    const response = await fetch('https://y-b.natyosu.com/auth/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
